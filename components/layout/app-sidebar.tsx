@@ -1,8 +1,6 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import {
   BarChart3,
   ClipboardList,
@@ -21,21 +19,12 @@ import {
   SidebarContent,
   SidebarFooter,
   SidebarGroup,
-  SidebarGroupContent,
   SidebarHeader,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { cn } from "@/lib/utils";
+import SidebarNav from "@/components/layout/sidebar-nav";
+import SidebarSection from "@/components/layout/sidebar-section";
 
-type NavItem = {
-  title: string;
-  href: string;
-  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
-};
-
-const navItems: NavItem[] = [
+const navItems = [
   { title: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
   { title: "Cotizaciones", href: "/cotizaciones", icon: ClipboardList },
   { title: "Clientes", href: "/clientes", icon: Users },
@@ -47,13 +36,7 @@ const navItems: NavItem[] = [
   { title: "Configuracion", href: "/configuracion", icon: Settings },
 ];
 
-function isActivePath(pathname: string, href: string) {
-  return pathname === href || pathname.startsWith(`${href}/`);
-}
-
 export default function AppSidebar() {
-  const pathname = usePathname();
-
   return (
     <Sidebar className="border-r bg-white">
       <SidebarHeader className="border-b px-4 py-5">
@@ -68,33 +51,13 @@ export default function AppSidebar() {
       </SidebarHeader>
 
       <SidebarContent className="px-2 py-4">
-        <SidebarGroup>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {navItems.map((item) => {
-                const active = isActivePath(pathname, item.href);
-                const Icon = item.icon;
-
-                return (
-                  <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild>
-                      <Link
-                        href={item.href}
-                        className={cn(
-                          "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition",
-                          "text-slate-600 hover:bg-slate-100 hover:text-slate-900",
-                          active && "bg-slate-900 text-white hover:bg-slate-900"
-                        )}
-                      >
-                        <Icon className="h-4 w-4" />
-                        <span>{item.title}</span>
-                      </Link>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                );
-              })}
-            </SidebarMenu>
-          </SidebarGroupContent>
+        <SidebarSection>
+          <SidebarNav items={navItems} />
+        </SidebarSection>
+        <SidebarGroup className="mt-6 px-2">
+          <div className="rounded-lg border border-dashed px-3 py-4 text-xs text-slate-500">
+            Gestiona polizas, clientes y pagos desde un solo lugar.
+          </div>
         </SidebarGroup>
       </SidebarContent>
 
