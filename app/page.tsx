@@ -1,9 +1,9 @@
-import Link from "next/link";
 import { BadgeCheck, ClipboardCheck, ShieldCheck, Timer, Users } from "lucide-react";
 
 import ContactSection from "@/components/home/contact-section";
 import HealthPlansSection from "@/components/home/health-plans-section";
 import ServicesSection from "@/components/home/services-section";
+import MainNavbar from "@/components/layout/main-navbar";
 import { Button } from "@/components/ui/button";
 
 const benefits = [
@@ -23,35 +23,7 @@ const stats = [
 export default function Page() {
   return (
     <div className="min-h-svh bg-slate-50 text-slate-900">
-      <header className="sticky top-0 z-30 border-b bg-white/90 backdrop-blur">
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-6 py-4 md:flex-row md:items-center md:justify-between">
-          <div className="text-sm font-semibold uppercase tracking-wide text-slate-900">
-            Aliadas Seguros
-          </div>
-          <nav className="flex flex-wrap items-center gap-4 text-xs font-semibold uppercase tracking-wide text-slate-500">
-            <Link href="/" className="hover:text-slate-900">
-              Inicio
-            </Link>
-            <Link href="/productos" className="hover:text-slate-900">
-              Seguros
-            </Link>
-            <Link href="/productos" className="hover:text-slate-900">
-              Planes de salud
-            </Link>
-            <Link href="/contacto" className="hover:text-slate-900">
-              Contacto
-            </Link>
-          </nav>
-          <div className="flex flex-wrap items-center gap-3">
-            <Button variant="ghost" className="text-slate-600">
-              Iniciar sesion
-            </Button>
-            <Button className="bg-[#0b7e87] text-white hover:bg-[#0a6f77]">
-              Cotizar ahora
-            </Button>
-          </div>
-        </div>
-      </header>
+      <MainNavbar />
 
       <main className="mx-auto w-full max-w-[1400px] px-6 md:px-10 lg:px-16 xl:px-20">
         <section className="grid gap-10 py-12 lg:grid-cols-[1.05fr_0.95fr]">
