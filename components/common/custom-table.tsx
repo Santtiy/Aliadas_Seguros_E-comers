@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
 
-type Column<T> = {
+export type Column<T> = {
   header: string;
   accessor: keyof T;
   cell?: (row: T) => React.ReactNode;

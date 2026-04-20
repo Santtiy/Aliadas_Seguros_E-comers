@@ -1,9 +1,9 @@
-import CustomTable from "@/components/common/custom-table";
+import CustomTable, { Column } from "@/components/common/custom-table";
 import StatusBadge from "@/components/common/status-badge";
 import { clients } from "@/data/clients";
 import { Client } from "@/types/client";
 
-const columns = [
+const columns: Column<Client>[] = [
   { header: "Cliente", accessor: "name" },
   { header: "Email", accessor: "email" },
   { header: "Telefono", accessor: "phone" },
