@@ -1,3 +1,5 @@
+import { Client } from "@/types/client";
+
 export const clients = [
   {
     id: "C-2001",
@@ -26,4 +28,4 @@ export const clients = [
     segment: "corporate",
     lastContact: "2026-04-16",
   },
-];
+] satisfies Client[];
