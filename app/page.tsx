@@ -1,68 +1,16 @@
 import Link from "next/link";
-import {
-  BadgeCheck,
-  ClipboardCheck,
-  HeartPulse,
-  PhoneCall,
-  ShieldCheck,
-  Stethoscope,
-  Timer,
-  Users,
-} from "lucide-react";
+import { BadgeCheck, ClipboardCheck, ShieldCheck, Timer, Users } from "lucide-react";
 
+import ContactSection from "@/components/home/contact-section";
+import HealthPlansSection from "@/components/home/health-plans-section";
+import ServicesSection from "@/components/home/services-section";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-
-const services = [
-  {
-    title: "Medicina prepagada",
-    description: "Cobertura integral con acceso a clinicas y especialistas.",
-    icon: HeartPulse,
-  },
-  {
-    title: "Plan complementario",
-    description: "Amplia tus beneficios con proteccion adicional.",
-    icon: ShieldCheck,
-  },
-  {
-    title: "Accidentes personales",
-    description: "Respaldo ante imprevistos con atencion inmediata.",
-    icon: Stethoscope,
-  },
-  {
-    title: "Emergencia medica",
-    description: "Asistencia 24/7 y traslados coordinados.",
-    icon: PhoneCall,
-  },
-];
 
 const benefits = [
   { label: "Atencion personalizada", icon: Users },
   { label: "Cobertura nacional", icon: ShieldCheck },
   { label: "Respuesta rapida", icon: Timer },
   { label: "Asesoria profesional", icon: ClipboardCheck },
-];
-
-const plans = [
-  {
-    name: "Plan Familiar Plus",
-    price: "$18,500",
-    description: "Cobertura completa para grupos familiares.",
-    perks: ["Consultas ilimitadas", "Urgencias 24/7", "Red nacional"],
-  },
-  {
-    name: "Plan Individual",
-    price: "$9,800",
-    description: "Proteccion flexible para necesidades personales.",
-    perks: ["Especialistas", "Telemedicina", "Copagos bajos"],
-  },
-  {
-    name: "Plan Corporativo",
-    price: "$54,000",
-    description: "Beneficios para equipos y empresas en crecimiento.",
-    perks: ["Atencion dedicada", "Reportes de salud", "Cobertura premium"],
-  },
 ];
 
 const stats = [
@@ -105,7 +53,7 @@ export default function Page() {
         </div>
       </header>
 
-      <main className="mx-auto w-full max-w-6xl px-6">
+      <main className="mx-auto w-full max-w-[1400px] px-6 md:px-10 lg:px-16 xl:px-20">
         <section className="grid gap-10 py-12 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="space-y-6">
             <div className="inline-flex items-center gap-2 rounded-full bg-[#0b7e87]/10 px-3 py-1 text-xs font-semibold text-[#0b7e87]">
@@ -159,38 +107,7 @@ export default function Page() {
           </div>
         </section>
 
-        <section className="py-12">
-          <div className="mb-6 flex items-center justify-between">
-            <div>
-              <div className="text-xs font-semibold uppercase tracking-wide text-[#0b7e87]">
-                Servicios destacados
-              </div>
-              <h2 className="text-2xl font-semibold">Proteccion a tu medida</h2>
-            </div>
-            <Link href="/productos" className="text-sm font-semibold text-[#0b7e87]">
-              Ver todos
-            </Link>
-          </div>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {services.map((service) => {
-              const Icon = service.icon;
-              return (
-                <Card key={service.title} className="border-slate-200">
-                  <CardContent className="space-y-3 p-5">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0b7e87]/10 text-[#0b7e87]">
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <div className="text-base font-semibold">{service.title}</div>
-                    <p className="text-sm text-slate-500">{service.description}</p>
-                    <Button variant="ghost" className="px-0 text-sm text-[#0b7e87]">
-                      Ver mas
-                    </Button>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-        </section>
+        <ServicesSection />
 
         <section className="py-12">
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -211,50 +128,23 @@ export default function Page() {
           </div>
         </section>
 
-        <section className="py-12">
-          <div className="mb-6">
-            <div className="text-xs font-semibold uppercase tracking-wide text-[#0b7e87]">
-              Planes recomendados
-            </div>
-            <h2 className="text-2xl font-semibold">Elige el plan ideal</h2>
-          </div>
-          <div className="grid gap-4 lg:grid-cols-3">
-            {plans.map((plan) => (
-              <Card key={plan.name} className="border-slate-200">
-                <CardContent className="space-y-4 p-6">
-                  <div>
-                    <div className="text-sm font-semibold text-slate-900">{plan.name}</div>
-                    <div className="text-2xl font-semibold text-[#0b7e87]">{plan.price}</div>
-                    <div className="text-sm text-slate-500">{plan.description}</div>
-                  </div>
-                  <Separator />
-                  <ul className="space-y-2 text-sm text-slate-600">
-                    {plan.perks.map((perk) => (
-                      <li key={perk} className="flex items-center gap-2">
-                        <span className="h-2 w-2 rounded-full bg-[#0b7e87]" />
-                        {perk}
-                      </li>
-                    ))}
-                  </ul>
-                  <Button className="w-full bg-[#0b7e87] text-white hover:bg-[#0a6f77]">
-                    Cotizar
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </section>
+        <HealthPlansSection />
 
         <section className="py-12">
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {stats.map((stat) => (
-              <div key={stat.label} className="rounded-xl border border-slate-200 bg-white p-5">
+              <div
+                key={stat.label}
+                className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm"
+              >
                 <div className="text-2xl font-semibold text-slate-900">{stat.value}</div>
                 <div className="text-sm text-slate-500">{stat.label}</div>
               </div>
             ))}
           </div>
         </section>
+
+        <ContactSection />
       </main>
 
       <section className="bg-[#0b7e87]">
