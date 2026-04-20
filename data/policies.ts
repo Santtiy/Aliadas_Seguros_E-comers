@@ -1,3 +1,5 @@
+import { Policy } from "@/types/policy";
+
 export const policies = [
   {
     id: "P-3001",
@@ -23,4 +25,4 @@ export const policies = [
     status: "active",
     renewalDate: "2026-09-01",
   },
-];
+] satisfies Policy[];

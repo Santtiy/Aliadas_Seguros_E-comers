@@ -1,10 +1,10 @@
-import CustomTable from "@/components/common/custom-table";
+import CustomTable, { Column } from "@/components/common/custom-table";
 import StatusBadge from "@/components/common/status-badge";
 import { formatCurrency } from "@/lib/formatters";
 import { payments } from "@/data/payments";
 import { Payment } from "@/types/payment";
 
-const columns = [
+const columns: Column<Payment>[] = [
   { header: "Pago", accessor: "id" },
   { header: "Cliente", accessor: "clientName" },
   {

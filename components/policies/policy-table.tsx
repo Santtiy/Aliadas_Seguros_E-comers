@@ -1,10 +1,10 @@
-import CustomTable from "@/components/common/custom-table";
+import CustomTable, { Column } from "@/components/common/custom-table";
 import StatusBadge from "@/components/common/status-badge";
 import { formatCurrency } from "@/lib/formatters";
 import { policies } from "@/data/policies";
 import { Policy } from "@/types/policy";
 
-const columns = [
+const columns: Column<Policy>[] = [
   { header: "Poliza", accessor: "id" },
   { header: "Titular", accessor: "holder" },
   { header: "Producto", accessor: "product" },

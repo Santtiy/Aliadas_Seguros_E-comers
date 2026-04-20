@@ -1,3 +1,5 @@
+import { Payment } from "@/types/payment";
+
 export const payments = [
   {
     id: "PAY-4001",
@@ -23,4 +25,4 @@ export const payments = [
     status: "paid",
     paidAt: "2026-04-10",
   },
-];
+] satisfies Payment[];
